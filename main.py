@@ -8,17 +8,54 @@ class DataTable:
         self.item = []
         self.category = []
         self.price = []
-        self.load_data()
+        if data_path.endswith('.json'):
+            self.from_json(data_path)
+        elif data_path.endswith('.csv'):
+            self.from_csv(data_path)
+   
 
 
-    def load_data(self):
+        
+
+
+    def from_json(self, data_path):
+        """
+        Loads data from a JSON file and populates the instance attributes.
+
+        Args:
+            data_path (str): The path to the JSON file.
+
+        Returns:
+            list: The data loaded from the JSON file.
+        """
+
+        item = []
+        category = []
+        price = []
         with open(self.data_path, 'r') as file:
             data = json.load(file)
-        self.item = [1,2,3]
-        self.category = [2,3,4]
-        self.price = [4,5,6]
+
+        for row in data:
+            self.item.append(row['item'])
+            self.category.append(row['category'])
+            self.price.append(row['price'])
+            
+       
 
         return data
+    
+    def from_csv(self, data_path):
+        """
+        Loads data from a CSV file and populates the instance attributes.
+
+        Args:
+            data_path (str): The path to the CSV file.
+
+        Returns:
+            list: The data loaded from the CSV file.
+        """
+        pass
+        
 
 
 
