@@ -54,7 +54,18 @@ class DataTable:
         Returns:
             list: The data loaded from the CSV file.
         """
-        pass
+        
+        item = []
+        category = []
+        price = []
+        with open(self.data_path, 'r') as file:
+            data = json.load(file)
+
+        for row in data:
+            self.item.append(row['item'])
+            self.category.append(row['category'])
+            self.price.appen
+        return [{self.item[0]:self.item[1:],self.category[0]:self.category[1:],self.price[0]:self.price[1:]}]
         
 
 
